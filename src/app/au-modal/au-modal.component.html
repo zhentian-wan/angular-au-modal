@@ -2,7 +2,7 @@
 
   <div class="modal-body">
 
-    <ng-container *ngIf="body else projectionBody">
+    <ng-container *ngIf="body; else projectionBody">
       <ng-container *ngTemplateOutlet="body"></ng-container>
     </ng-container>
 
