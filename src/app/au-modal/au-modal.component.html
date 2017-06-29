@@ -1,7 +1,15 @@
 <div class="modal-overlay">
 
   <div class="modal-body">
-    <ng-content></ng-content>
+
+    <ng-container *ngIf="body else projectionBody">
+      <ng-container *ngTemplateOutlet="body"></ng-container>
+    </ng-container>
+
+    <ng-template #projectionBody>
+      <ng-content></ng-content>
+    </ng-template>
+
   </div>
 
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'au-modal',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuModalComponent implements OnInit {
 
+  @Input() body: TemplateRef<any>;
   constructor() { }
 
   ngOnInit() {
