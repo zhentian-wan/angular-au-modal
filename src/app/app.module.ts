@@ -14,7 +14,7 @@ import {AuTabPanelModule} from 'au-tab-panel';
     BrowserModule,
     AuInputModule,
     AuTabPanelModule,
-    AuModalModule
+    AuModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

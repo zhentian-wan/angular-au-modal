@@ -1,6 +1,6 @@
-<div class="modal-overlay">
+<div class="modal-overlay" (click)="closeModal()">
 
-  <div class="modal-body">
+  <div class="modal-body" (click)="cancelCloseModal($event)">
 
     <ng-container *ngIf="body; else projectionBody">
       <ng-container *ngTemplateOutlet="body"></ng-container>

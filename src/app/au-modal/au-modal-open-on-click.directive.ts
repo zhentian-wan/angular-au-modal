@@ -1,9 +1,14 @@
-import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
+import {AuModalService} from './au-modal.service';
 
 @Directive({
   selector: '[auModalOpenOnClick]'
 })
-export class AuModalOpenOnClickDirective {
+export class AuModalOpenOnClickDirective implements OnInit{
+  ngOnInit(): void {
+    this.auModalService.close$
+      .subscribe(() => this.viewContainer.clear());
+  }
 
   @Input()
   set auModalOpenOnClick (els) {
@@ -26,7 +31,8 @@ export class AuModalOpenOnClickDirective {
 
   constructor(
     private template: TemplateRef<any>,
-    private viewContainer: ViewContainerRef
+    private viewContainer: ViewContainerRef,
+    private auModalService: AuModalService
   ) { }
 
 }
