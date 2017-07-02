@@ -20,18 +20,18 @@ export class AuModalComponent implements OnInit {
   ngOnInit() {
     this.eventManage.addGlobalEventListener('window', 'keyup.esc', () => {
       if (this.closeOnEsc) {
-        this.closeModal();
+        this.close();
       }
     })
   }
 
   onClick() {
     if (this.closeOnClickOutside) {
-      this.closeModal();
+      this.close();
     }
   }
 
-  closeModal() {
+  close() {
     this.auModelService.close();
   }
 
