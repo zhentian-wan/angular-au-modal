@@ -65,7 +65,11 @@
 
 
   <ng-template [auModalOpenOnClick]="[loginButton, signUpButton]">
-    <au-modal class="auth-modal" [body]="newModelBody">
+    <au-modal
+      class="auth-modal"
+      [closeOnClickOutside]="true"
+      [closeOnEsc]="true"
+      [body]="newModelBody">
       <au-tab-panel>
         <au-tab title="Login">
           <form>

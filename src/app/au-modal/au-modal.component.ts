@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {AuModalService} from './au-modal.service';
+import {EventManager} from '@angular/platform-browser';
 
 @Component({
   selector: 'au-modal',
@@ -9,11 +10,25 @@ import {AuModalService} from './au-modal.service';
 export class AuModalComponent implements OnInit {
 
   @Input() body: TemplateRef<any>;
-  constructor(
-    private auModelService: AuModalService
-  ) { }
+  @Input() closeOnClickOutside = true;
+  @Input() closeOnEsc = true;
+
+  constructor(private auModelService: AuModalService,
+              private eventManage: EventManager) {
+  }
 
   ngOnInit() {
+    this.eventManage.addGlobalEventListener('window', 'keyup.esc', () => {
+      if (this.closeOnEsc) {
+        this.closeModal();
+      }
+    })
+  }
+
+  onClick() {
+    if (this.closeOnClickOutside) {
+      this.closeModal();
+    }
   }
 
   closeModal() {
