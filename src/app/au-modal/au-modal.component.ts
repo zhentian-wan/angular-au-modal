@@ -10,6 +10,7 @@ import {EventManager} from '@angular/platform-browser';
 export class AuModalComponent implements OnInit {
 
   @Input() body: TemplateRef<any>;
+  @Input() context: any;
   @Input() closeOnClickOutside = true;
   @Input() closeOnEsc = true;
 

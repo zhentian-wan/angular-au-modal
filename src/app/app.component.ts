@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  loginTabActivated: boolean = true;
+
+  setLoginTabActive(active) {
+    this.loginTabActivated = active;
+  }
 }
