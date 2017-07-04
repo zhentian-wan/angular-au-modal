@@ -117,6 +117,8 @@
     </au-tab-panel>
   </au-modal>
 
+  <au-modal id="testModal" *auModalOpenOnClick="testButton"></au-modal>
+
 
   <div class="modal-buttons">
 
@@ -124,6 +126,7 @@
 
     <button #signUpButton (click)="setLoginTabActive(false)">Sign Up</button>
 
+    <button #testButton id="testButton">Button</button>
   </div>
 
 </div>

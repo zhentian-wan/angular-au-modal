@@ -1,6 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
+import {By} from '@angular/platform-browser';
+
+let component, fixture, el, modal;
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,22 +14,29 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.debugElement.componentInstance;
+    el = fixture.debugElement;
+    modal = el.query(By.css('#testModal'));
 
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!!');
+  });
+
+  it('should create the app', async(() => {
+    expect(component).toBeTruthy();
   }));
+
+
+  it('should not add the modal to the page, if the modal is close', () => {
+
+      expect(modal).toBeFalsy();
+  });
+
+  it('should open the modal when the test button is clciked', () => {
+      fixture.nativeElement.querySelector("#testButton").click();
+      fixture.detectChanges();
+      const opendModal = fixture.nativeElement.querySelector("#testModal");
+      expect(opendModal).toBeTruthy();
+  });
 });
